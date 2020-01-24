@@ -5,7 +5,7 @@ module Enumerable
     return to_enum unless block_given?
 
     x = 0
-    while x < self.length
+    while x < length
       yield(to_a[x])
       x += 1
     end
@@ -16,7 +16,7 @@ module Enumerable
     return to_enum unless block_given?
 
     x = 0
-    while x < self.length
+    while x < length
       yield(self[x], x)
       x += 1
     end
@@ -28,7 +28,7 @@ module Enumerable
 
     arr = []
     x = 0
-    while x < self.length
+    while x < length
       arr << self[x] if yield(self[x])
       x += 1
     end
