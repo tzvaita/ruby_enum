@@ -46,7 +46,7 @@ module Enumerable
       elsif pat.class == Class
         my_each { |x| return false unless x.is_a? pat }
       else
-        my_each { |x| return false unless x === pat }
+        my_each { |x| return false unless x == pat }
       end
     end
     true
