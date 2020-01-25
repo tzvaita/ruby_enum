@@ -36,15 +36,20 @@ module Enumerable
   end
 
   def my_all?(pat = nil)
-    result = true
     if block_given?
-      my_each { |ele| result &= (yield ele) }
-    elsif pat
-      my_each { |ele| result &= pat == ele }
+      my_each { |x| return false unless yield x }
     else
-      my_each { |ele| result &= ele }
+      return my_all? { |obj| obj } unless pat
+
+      if pat.class == Regexp
+        my_each { |x| return false unless pat.match?(x) }
+      elsif pat.class == Class
+        my_each { |x| return false unless x.is_a? pat }
+      else
+        my_each { |x| return false unless x === pat }
+      end
     end
-    result
+    true
   end
 
   def my_any?(pat = nil)
