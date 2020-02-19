@@ -192,8 +192,21 @@ RSpec.describe Enumerable do
   # my_inject
 
   describe '#my_inject' do
-    it 'does magic' do
-      expect().to eql()
+    it 'sums the values of the array' do
+      injsum = marray.my_inject(:+)
+      expect(injsum).to eql(55)
+    end
+
+    it 'multiplies the values of the array' do
+      injsum = marray.my_inject(:*)
+      expect(injsum).to eql(3_628_800)
+    end
+
+    it 'finds the longest word' do
+      longlong = %w[taco spaghetti pizza].my_inject do |word1, word2|
+        word1.length > word2.length ? word1 : word2
+      end
+      expect(longlong).to eql('spaghetti')
     end
   end
 
