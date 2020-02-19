@@ -234,12 +234,33 @@ RSpec.describe Enumerable do
 
   # pattern?
   describe '#pattern?' do
-    it 'does magic' do
-      expect().to eql()
+    it 'checks if both elements are integers' do
+      boolie = pattern?(1, 1)
+      expect(boolie).to eql(true)
+    end
+
+    it 'checks if both elements are integers' do
+      boolie = pattern?(1, '1')
+      expect(boolie).to eql(false)
+    end
+
+    it 'checks if both elements are strings' do
+      boolie = pattern?('1', '1')
+      expect(boolie).to eql(true)
+    end
+
+    it 'checks if both elements are arrays' do
+      boolie = pattern?([1, 2], 1)
+      expect(boolie).to eql(false)
+    end
+
+    it 'checks if both elements are arrays' do
+      boolie = pattern?([1, 2], [1, 2])
+      expect(boolie).to eql(true)
     end
   end
 
-  # inj_param
+    # inj_param
   describe '#inj_param' do
     it 'does magic' do
       expect().to eql()
