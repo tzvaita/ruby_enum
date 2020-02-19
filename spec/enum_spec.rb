@@ -21,6 +21,13 @@ RSpec.describe Enumerable do
       end
       expect(marray.length).to eql(compare.length)
     end
+
+    it 'Pushes each element of an array into another in reverse order' do
+      newarray = []
+      marray.my_each do |i|
+        newarray << i 
+      end
+      expect(marray.reverse).to eql(newarray.reverse)
   end
 
   # my_each_with_index
@@ -262,27 +269,17 @@ RSpec.describe Enumerable do
 
   # inj_param
   describe '#inj_param' do
-    it 'does magic' do
-      expect().to eql()
+    it 'it checks for a numeric and returns nil for a symbol' do
+      inj = inj_param(3)
+      expect(inj).to eql([3, nil])
+    end
+
+    it 'it checks for a symbol and returns nil for numeric' do
+      x = 'taco'
+      x = :type
+      symbol = inj_param(:type)
+      expect(symbol).to eql([nil, :type])
     end
   end
 end
-
-def inj_param(*args)
-  # this assigns nil to both result and sym
-  # this declares variables for later usage
-  result, sym = nil
-  #this iterates through the arguements
-  args.my_each do |arg|
-
-  # this makes result = to arg if arg is numberic
-    result = arg if arg.is_a? Numeric
-
-  # this makes sym the arguement unless it's numeric
-    sym = arg unless arg.is_a? Numeric
-  end
-  [result, sym]
-  # returs either result or sym or both
 end
-
-puts inj_param()
