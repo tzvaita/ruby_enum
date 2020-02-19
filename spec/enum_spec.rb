@@ -60,8 +60,26 @@ RSpec.describe Enumerable do
 
   # my_all?
   describe '#my_all?' do
-    it 'TACO' do
-      expect(a).to eql(2)
+    it 'Checks if all the members of an array are strings' do
+      warray = %w[taco sandwich pizza cake]
+      boolie = warray.my_all? do |word|
+        word.is_a? String
+      end
+      expect(boolie).to eql(true)
+    end
+
+    it 'Checks if all the members of an array are integers' do
+      boolie = marray.my_all? do |int|
+        int.is_a? Integer
+      end
+      expect(boolie).to eql(true)
+    end
+
+    it 'Checks if all the members of an array are single digit' do
+      boolie = marray.my_all? do |int|
+        int.size < 2
+      end
+      expect(boolie).to eql(false)
     end
   end
 
