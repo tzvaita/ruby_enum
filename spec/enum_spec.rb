@@ -25,9 +25,10 @@ RSpec.describe Enumerable do
     it 'Pushes each element of an array into another in reverse order' do
       newarray = []
       marray.my_each do |i|
-        newarray << i 
+        newarray << i
       end
       expect(marray.reverse).to eql(newarray.reverse)
+    end
   end
 
   # my_each_with_index
@@ -275,11 +276,8 @@ RSpec.describe Enumerable do
     end
 
     it 'it checks for a symbol and returns nil for numeric' do
-      x = 'taco'
-      x = :type
       symbol = inj_param(:type)
       expect(symbol).to eql([nil, :type])
     end
   end
-end
 end
