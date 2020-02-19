@@ -4,6 +4,7 @@ RSpec.describe Enumerable do
   let(:marray) { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
 
   # my_each
+
   describe '#my_each' do
     it 'Pushes each element of an array into another in the exact same order' do
       compare = []
@@ -23,6 +24,7 @@ RSpec.describe Enumerable do
   end
 
   # my_each_with_index
+
   describe '#my_each_with_index' do
     it 'pushes each index of an array into a new array' do
       indexes = []
@@ -42,6 +44,7 @@ RSpec.describe Enumerable do
   end
 
   # my_select
+
   describe '#my_select' do
     it 'creates an array with the odd elements of another' do
       odds = marray.my_select do |num|
@@ -59,6 +62,7 @@ RSpec.describe Enumerable do
   end
 
   # my_all?
+
   describe '#my_all?' do
     it 'Checks if all the members of an array are strings' do
       warray = %w[taco sandwich pizza cake]
@@ -84,6 +88,7 @@ RSpec.describe Enumerable do
   end
 
   # my_any?
+
   describe '#my_any?' do
     it 'checks if any value of the array is a string' do
       boolie = marray.my_any? do |int|
@@ -108,6 +113,7 @@ RSpec.describe Enumerable do
   end
 
   # my_none?
+
   describe '#my_none?' do
     it 'checks if no value of the array is a string' do
       boolie = marray.my_none? do |int|
@@ -132,6 +138,7 @@ RSpec.describe Enumerable do
   end
 
   # my_count
+
   describe '#my_count' do
     it 'counts how many values of the array are integers' do
       counting = marray.my_count do |int|
@@ -156,13 +163,34 @@ RSpec.describe Enumerable do
   end
 
   # my_map
+
   describe '#my_map' do
-    it 'does magic' do
-      expect().to eql()
+    it 'makes every word in the array plural' do
+      vocabulary = %w[taco pizza cake]
+      plurals = vocabulary.my_map do |word|
+        word + 's'
+      end
+      expect(plurals).to eql(%w[tacos pizzas cakes])
+    end
+
+    it 'makes every integer in the array a string' do
+      numbers = [1, 2, 3]
+      strings = numbers.my_map(&:to_s)
+      expect(strings).to eql(%w[1 2 3])
+    end
+
+    it 'multiplies every odd number by two' do
+      numbers = [1, 2, 3, 4, 5]
+      doubles = numbers.my_map do |inte|
+        inte *= 2 if inte.odd?
+        inte if inte.even?
+      end
+      expect(doubles).to eql([2, 2, 6, 4, 10])
     end
   end
 
   # my_inject
+
   describe '#my_inject' do
     it 'does magic' do
       expect().to eql()
@@ -170,6 +198,7 @@ RSpec.describe Enumerable do
   end
 
   # multiply_els
+
   describe '#multiply_els' do
     it 'does magic' do
       expect().to eql()
