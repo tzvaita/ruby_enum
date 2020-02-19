@@ -133,8 +133,25 @@ RSpec.describe Enumerable do
 
   # my_count
   describe '#my_count' do
-    it 'does magic' do
-      expect().to eql()
+    it 'counts how many values of the array are integers' do
+      counting = marray.my_count do |int|
+        int.is_a? Integer
+      end
+      expect(counting).to eql(10)
+    end
+
+    it 'counts how many values of the array are 5' do
+      counting = marray.my_count do |int|
+        int == 5
+      end
+      expect(counting).to eql(1)
+    end
+
+    it 'counts how many values of the array have more than a digit integers' do
+      counting = marray.my_count do |int|
+        int.is_a? String
+      end
+      expect(counting).to eql(0)
     end
   end
 
