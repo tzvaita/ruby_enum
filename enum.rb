@@ -112,10 +112,6 @@ module Enumerable
     result
   end
 
-  def multiply_els
-    my_inject { |x, y| x * y }
-  end
-
   def pattern?(obj, pat)
     (obj.respond_to?(:eql?) && obj.eql?(pat)) ||
       (pat.is_a?(Class) && obj.is_a?(pat)) ||
@@ -130,4 +126,9 @@ module Enumerable
     end
     [result, sym]
   end
+end
+
+  #Fer modifies multiply_els
+def multiply_els(something)
+  something.inject { |x, y| x * y }
 end

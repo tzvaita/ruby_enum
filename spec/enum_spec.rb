@@ -213,8 +213,22 @@ RSpec.describe Enumerable do
   # multiply_els
 
   describe '#multiply_els' do
-    it 'does magic' do
-      expect().to eql()
+    it 'multiplies all the values of the array' do
+      somerray = [1, 1, 1, 1, 1, 1]
+      multrray = multiply_els(somerray)
+      expect(multrray).to eql(1)
+    end
+
+    it 'multiplies all the values of the array' do
+      somerray = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      multrray = multiply_els(somerray)
+      expect(multrray).to eql(3_715_891_200)
+    end
+
+    it 'multiplies all the values of the array' do
+      somerray = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+      multrray = multiply_els(somerray)
+      expect(multrray).to eql(122_522_400)
     end
   end
 
