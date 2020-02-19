@@ -267,3 +267,22 @@ RSpec.describe Enumerable do
     end
   end
 end
+
+def inj_param(*args)
+  # this assigns nil to both result and sym
+  # this declares variables for later usage
+  result, sym = nil
+  #this iterates through the arguements
+  args.my_each do |arg|
+
+  # this makes result = to arg if arg is numberic
+    result = arg if arg.is_a? Numeric
+
+  # this makes sym the arguement unless it's numeric
+    sym = arg unless arg.is_a? Numeric
+  end
+  [result, sym]
+  # returs either result or sym or both
+end
+
+puts inj_param()
