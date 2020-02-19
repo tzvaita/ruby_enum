@@ -109,8 +109,25 @@ RSpec.describe Enumerable do
 
   # my_none?
   describe '#my_none?' do
-    it 'does magic' do
-      expect().to eql()
+    it 'checks if no value of the array is a string' do
+      boolie = marray.my_none? do |int|
+        int.is_a? String
+      end
+      expect(boolie).to eql(true)
+    end
+
+    it 'checks if no value of the array is 666' do
+      boolie = marray.my_none? do |int|
+        int == 666
+      end
+      expect(boolie).to eql(true)
+    end
+
+    it 'checks if no value of the array has more than one digit' do
+      boolie = marray.my_none? do |int|
+        int.size > 1
+      end
+      expect(boolie).to eql(false)
     end
   end
 
