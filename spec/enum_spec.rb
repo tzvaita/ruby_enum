@@ -85,8 +85,25 @@ RSpec.describe Enumerable do
 
   # my_any?
   describe '#my_any?' do
-    it 'does magic' do
-      expect().to eql()
+    it 'checks if any value of the array is a string' do
+      boolie = marray.my_any? do |int|
+        int.is_a? String
+      end
+      expect(boolie).to eql(false)
+    end
+
+    it 'checks if any value of the array is 5' do
+      boolie = marray.my_any? do |int|
+        int == 5
+      end
+      expect(boolie).to eql(true)
+    end
+
+    it 'checks if any value of the array has more than one digit' do
+      boolie = marray.my_any? do |int|
+        int.size > 1
+      end
+      expect(boolie).to eql(true)
     end
   end
 
