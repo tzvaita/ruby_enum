@@ -260,7 +260,7 @@ RSpec.describe Enumerable do
     end
   end
 
-    # inj_param
+  # inj_param
   describe '#inj_param' do
     it 'does magic' do
       expect().to eql()
