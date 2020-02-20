@@ -111,23 +111,26 @@ module Enumerable
     end
     result
   end
+end
 
-  def multiply_els
-    my_inject { |x, y| x * y }
-  end
+# Fer modifies multiply_els
+def multiply_els(something)
+  something.inject { |x, y| x * y }
+end
 
-  def pattern?(obj, pat)
-    (obj.respond_to?(:eql?) && obj.eql?(pat)) ||
-      (pat.is_a?(Class) && obj.is_a?(pat)) ||
-      (pat.is_a?(Regexp) && pat.match(obj))
-  end
+# Fer relocates this method
+def pattern?(obj, pat)
+  (obj.respond_to?(:eql?) && obj.eql?(pat)) ||
+    (pat.is_a?(Class) && obj.is_a?(pat)) ||
+    (pat.is_a?(Regexp) && pat.match(obj))
+end
 
-  def inj_param(*args)
-    result, sym = nil
-    args.my_each do |arg|
-      result = arg if arg.is_a? Numeric
-      sym = arg unless arg.is_a? Numeric
-    end
-    [result, sym]
+# Fer relocates this method
+def inj_param(*args)
+  result, sym = nil
+  args.my_each do |arg|
+    result = arg if arg.is_a? Numeric
+    sym = arg unless arg.is_a? Numeric
   end
+  [result, sym]
 end
